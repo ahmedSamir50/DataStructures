@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fiS2pUZLSeNqnNiloKo61NW0wit+d9SvTZXsf8gFKPYgPSE2HV8BWW6WNeOEfIjLROIYs1RyEWNViwqlK0kGsg==",
+  "success": true,
+  "projectFilePath": "D:\\AhmedFiles\\ahmed samir\\DotNetProjects\\TrySomeThing\\DS_Studying\\repo\\DataStructures\\DataStructures.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ahmed\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.15\\microsoft.netcore.app.host.win-x64.3.1.15.nupkg.sha512"
+  ],
+  "logs": []
+}
