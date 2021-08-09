@@ -11,17 +11,16 @@ namespace DataStructures
         {
             Console.WriteLine("Hello World!");
             // Linked List 
-            DynamicLengthQueueFIFO<int> queueFIFO = new DynamicLengthQueueFIFO<int>(0);
-            queueFIFO.EnQueue(1);
-            queueFIFO.EnQueue(2);
-            queueFIFO.EnQueue(3);
-            queueFIFO.EnQueue(4);
-            queueFIFO.EnQueue(5);
-            queueFIFO.EnQueue(6);
+            StackLIFO<int> queueFIFO = new StackLIFO<int>(0);
+            queueFIFO.Push(1);
+            queueFIFO.Push(2);
+            queueFIFO.Push(3);
+            queueFIFO.PushAll(4 , 5 , 6);
+
             List<int> l = queueFIFO.DisplayAll().ToList();
 
             PrintElements(l);
-            queueFIFO.DeQueue();
+            queueFIFO.Pop();
             PrintElements(queueFIFO.DisplayAll().ToList());
             Console.ReadLine();
         }
