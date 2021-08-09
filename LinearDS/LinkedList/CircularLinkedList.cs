@@ -10,9 +10,9 @@ namespace DataStructures.LinearDS
     public class CircularLinkedList<T> : ICircularLinkedList<T>
     {
         // |first| 1,2,3,4,5,6 |last| =>,..... 
-        DoubleLNode<T> FirstNode;
+        public DoubleLNode<T> FirstNode { get; private set; }
         // Last Is The Head 
-        DoubleLNode<T> LastNode;
+        public DoubleLNode<T> LastNode { get; private set; }
         private bool _IsEmpty;
 
         /// <summary>
