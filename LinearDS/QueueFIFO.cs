@@ -11,34 +11,34 @@ namespace DataStructures.LinearDS
     {
         // FROM REARE TO FRONT
         private T[] FiFoQueueList;
-        int rearIndex;
-        int frontIndex;
-        int size;
+        public int RearIndex { get; private set; }
+        public int FrontIndex { get; private set; }
+        public int Size { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether is empty.
         /// </summary>
-        public bool IsEmpty { get => this.frontIndex == -1 || frontIndex > rearIndex; }
+        public bool IsEmpty { get => this.FrontIndex == -1 || FrontIndex > RearIndex; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueueFIFO"/> class.
         /// </summary>
         public DynamicLengthQueueFIFO (T firstElem)
         {
-            this.size = 1;
+            this.Size = 1;
             this.FiFoQueueList = new T[] { firstElem};
-            this.rearIndex = 0;
-            this.frontIndex = 0;
+            this.RearIndex = 0;
+            this.FrontIndex = 0;
         }
         /// <summary>
         /// Initializes a new instance of the <see cref="QueueFIFO"/> class.
         /// </summary>
         public DynamicLengthQueueFIFO ()
         {
-            this.size = 0;
+            this.Size = 0;
             this.FiFoQueueList = new T[0];
-            this.rearIndex = -1;
-            this.frontIndex = -1;
+            this.RearIndex = -1;
+            this.FrontIndex = -1;
         }
 
         /// <summary>
@@ -48,15 +48,15 @@ namespace DataStructures.LinearDS
         /// <returns>A T.</returns>
         public T EnQueue (T addElem)
         {
-            size = FiFoQueueList.Length + 1;
-            T[] tempArr = new T[size];
-            Array.Copy(FiFoQueueList, tempArr, FiFoQueueList.Length);
-            tempArr[FiFoQueueList.Length] = addElem;
+            Size = FiFoQueueList.Length +1 ;
+            T[] tempArr = new T[Size];
+            Array.Copy(FiFoQueueList,0, tempArr,1, FiFoQueueList.Length);
+            tempArr[0] = addElem;
             FiFoQueueList = tempArr;
-            rearIndex = tempArr.Length;
-            if (frontIndex == -1)
-                frontIndex = 0;
-            return tempArr[^1];
+            RearIndex = tempArr.Length-1;
+            if (FrontIndex == -1)
+                FrontIndex = 0;
+            return tempArr[0];
         }
 
         /// <summary>
@@ -66,14 +66,17 @@ namespace DataStructures.LinearDS
         /// <returns>A T.</returns>
         public T DeQueue ()
         {
-            size = FiFoQueueList.Length - 1;
-            T[] tempArr = new T[size];
-            Array.Copy(FiFoQueueList,1 ,tempArr,0, FiFoQueueList.Length-1);
+            if (Size == 0)
+                throw new Exception("Queue Is Empty");
+            Size = FiFoQueueList.Length ;
+            --Size;
+            T[] tempArr = new T[Size];
             T removed = FiFoQueueList[0];
+            Array.Copy(FiFoQueueList,1 ,tempArr,0, FiFoQueueList.Length-1);
             FiFoQueueList = tempArr;
-            rearIndex = tempArr.Length;
-            if (size == 0)
-                frontIndex = -1;
+            RearIndex = tempArr.Length-1;
+            if (Size == 0)
+                FrontIndex = -1;
             return removed;
         }
 
@@ -105,7 +108,7 @@ namespace DataStructures.LinearDS
         /// </summary>
         public int FrontIndex { get; private set; }
         /// <summary>
-        /// Gets the size.
+        /// Gets the Size.
         /// </summary>
         public int Size { get; private set; }
 
@@ -150,14 +153,15 @@ namespace DataStructures.LinearDS
         /// Ins the queue.
         /// </summary>
         /// <param name="addElem">The add elem.</param>
-        /// <returns>A T.</returns>
+        /// <returns>Removed Element </returns>
         public T DeQueue ()
         {
             if (IsEmpty)
                 return default;
-            T removed = FiFoQueueList[^1];
+            T removed = FiFoQueueList[RearIndex];
+            FiFoQueueList[RearIndex] = default;
             --RearIndex;
-            if (Size == 0)
+            if (RearIndex == -1)
                 FrontIndex = -1;
             return removed;
         }

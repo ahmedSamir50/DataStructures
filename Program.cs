@@ -11,7 +11,7 @@ namespace DataStructures
         {
             Console.WriteLine("Hello World!");
             // Linked List 
-            FixedLengthQueueFIFO<int> queueFIFO = new FixedLengthQueueFIFO<int>(6);
+            DynamicLengthQueueFIFO<int> queueFIFO = new DynamicLengthQueueFIFO<int>(0);
             queueFIFO.EnQueue(1);
             queueFIFO.EnQueue(2);
             queueFIFO.EnQueue(3);
@@ -19,15 +19,20 @@ namespace DataStructures
             queueFIFO.EnQueue(5);
             queueFIFO.EnQueue(6);
             List<int> l = queueFIFO.DisplayAll().ToList();
-            queueFIFO.DeQueue();
-           
-            l.ForEach((node) =>
-            {
-                Console.WriteLine("Elem: "+node);
-                //lList.DeleteNode();
-            });
 
+            PrintElements(l);
+            queueFIFO.DeQueue();
+            PrintElements(queueFIFO.DisplayAll().ToList());
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Prints the elements.
+        /// </summary>
+        /// <param name="l">The l.</param>
+        private static void PrintElements<T> (List<T> l)
+        {
+            l.ForEach((node) => Console.WriteLine("Elem: " + node));
         }
     }
 }
