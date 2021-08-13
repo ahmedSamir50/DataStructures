@@ -2,6 +2,8 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using DataStructures.Trees;
+using DataStructures.Types;
 
 namespace DataStructures
 {
@@ -11,17 +13,30 @@ namespace DataStructures
         {
             Console.WriteLine("Hello World!");
             // Linked List 
-            StackLIFO<int> queueFIFO = new StackLIFO<int>(0);
-            queueFIFO.Push(1);
-            queueFIFO.Push(2);
-            queueFIFO.Push(3);
-            queueFIFO.PushAll(4 , 5 , 6);
+            BinaryTree<char> bTree = new BinaryTree<char>();
+            TreeNode<char> rootNode = new TreeNode<char>('A');
+            bTree.AddNode(rootNode);
+            bTree.AddNode(new TreeNode<char>('C'), rootNode);
+            bTree.AddNode(new TreeNode<char>('B'), rootNode);
+            bTree.AddNode(new TreeNode<char>('d'), rootNode);
+            bTree.AddNode(new TreeNode<char>('b'));
+            bTree.AddNode(new TreeNode<char>('f'));
+            bTree.AddNode(new TreeNode<char>('F'), rootNode);
+            bTree.AddNode(new TreeNode<char>('g'));
+            bTree.AddNode(new TreeNode<char>('h'));
+            bTree.AddNode(new TreeNode<char>('i'));
 
-            List<int> l = queueFIFO.DisplayAll().ToList();
 
-            PrintElements(l);
-            queueFIFO.Pop();
-            PrintElements(queueFIFO.DisplayAll().ToList());
+            bool hasOne = bTree.Contains('G');
+            TreeNode<char> x_C = bTree.GetFirstTreeNodeByVal('C');
+            TreeNode<char> x_d = bTree.GetFirstTreeNodeByVal('d');
+
+            Console.WriteLine(hasOne);
+            Console.WriteLine(x_C.Left.Value);
+            Console.WriteLine(x_C.Right.Value);
+
+            Console.WriteLine(x_d.Left.Value);
+            Console.WriteLine(x_d.Right.Value);
             Console.ReadLine();
         }
 

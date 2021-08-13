@@ -1,4 +1,6 @@
-﻿namespace DataStructures.LinearDS
+﻿using DataStructures.LinearDS;
+
+namespace DataStructures.Types
 {
     /// <summary>
     /// The double liked node.

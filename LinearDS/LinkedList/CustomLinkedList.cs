@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataStructures.Types;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataStructures.LinearDS
@@ -88,6 +90,37 @@ namespace DataStructures.LinearDS
             {
                 yield return h;
                 h = h.Next;
+            }
+        }
+
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <returns>An int of this list count.</returns>
+        public int GetCount ()
+        {
+            return this._IsEmpty ? 0 : this.Enumerate().ToList().Count;
+        }
+
+        /// <summary>
+        /// Contains the.
+        /// </summary>
+        /// <param name="seachFor">The seach for.</param>
+        /// <returns>A bool.</returns>
+        public bool Contains (T seachFor)
+        {
+            if (_IsEmpty)
+                return false;
+            else
+            {
+                Node<T> h = Head;
+                while (h != null)
+                {
+                    if (h.Value.Equals(seachFor))
+                        return true;
+                    h = h.Next;
+                }
+                return false;
             }
         }
     }

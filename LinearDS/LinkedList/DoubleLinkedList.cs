@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DataStructures.Types;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataStructures.LinearDS
 {
@@ -87,6 +89,36 @@ namespace DataStructures.LinearDS
             {
                 yield return h;
                 h = h.PrevNode;
+            }
+        }
+
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <returns>An int of this list count.</returns>
+        public int GetCount ()
+        {
+            return this._IsEmpty ? 0 : this.Enumerate().ToList().Count;
+        }
+        /// <summary>
+        /// Contains the.
+        /// </summary>
+        /// <param name="seachFor">The seach for.</param>
+        /// <returns>A bool.</returns>
+        public bool Contains (T seachFor)
+        {
+            if (_IsEmpty)
+                return false;
+            else
+            {
+                DoubleLNode<T> h = HeadNode;
+                while (h != null)
+                {
+                    if (h.Value.Equals(seachFor))
+                        return true;
+                    h = h.Next;
+                }
+                return false;
             }
         }
     }

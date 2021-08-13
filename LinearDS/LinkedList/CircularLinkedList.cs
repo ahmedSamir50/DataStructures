@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataStructures.Types;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataStructures.LinearDS
@@ -113,6 +115,14 @@ namespace DataStructures.LinearDS
         }
 
         /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <returns>An int of this list count.</returns>
+        public int GetCount () {
+            return this._IsEmpty?0: this.Enumerate().ToList().Count;
+        }
+
+        /// <summary>
         /// Gets the first element.
         /// </summary>
         /// <returns>A DoubleLNode.</returns>
@@ -128,6 +138,28 @@ namespace DataStructures.LinearDS
         public DoubleLNode<T> GetLastElement ()
         {
             return this.LastNode;
+        }
+
+        /// <summary>
+        /// Contains the.
+        /// </summary>
+        /// <param name="seachFor">The seach for.</param>
+        /// <returns>A bool.</returns>
+        public bool Contains (T seachFor)
+        {
+            if (_IsEmpty)
+                return false;
+            else
+            {
+                DoubleLNode<T> h = FirstNode;
+                while (h != null)
+                {
+                    if (h.Value.Equals(seachFor))
+                        return true;
+                    h = h.Next;
+                }
+                return false;
+            }
         }
     }
 }

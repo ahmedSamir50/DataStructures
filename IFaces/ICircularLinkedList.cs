@@ -1,4 +1,6 @@
-﻿namespace DataStructures.LinearDS
+﻿using DataStructures.Types;
+
+namespace DataStructures.LinearDS
 {
     /// <summary>
     /// The circular linked list.

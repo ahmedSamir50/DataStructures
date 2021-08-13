@@ -105,6 +105,17 @@ namespace DataStructures.LinearDS
         }
 
         /// <summary>
+        /// Get The Next Head Element.
+        /// </summary>
+        /// <returns>Element of Type this Stack Type</returns>
+        public T JustPeek () {
+            if (Size == 0)
+                throw new Exception("Stack Is Empty");
+            return stackList[^1];
+           
+        }
+
+        /// <summary>
         /// Displays the all.
         /// </summary>
         /// <returns>A list of TS.</returns>
@@ -117,4 +128,9 @@ namespace DataStructures.LinearDS
         }
 
     }
+
+    /// <summary>
+    /// dynamic type stack for non generic usage
+    /// </summary>
+    public class StackLIFO : StackLIFO<object> { }
 }
